@@ -1,26 +1,17 @@
-import unittest
-from src.palindrome import is_palindrome
+mport string
 
-class TestPalindrome(unittest.TestCase):
-    def test_simple_palindromes(self):
-        self.assertTrue(is_palindrome("madam"))
-        self.assertTrue(is_palindrome("racecar"))
-        self.assertTrue(is_palindrome("level"))
+def is_palindrome(text):
+    cleaned = ''.join(char.lower() for char in text if char.isalnum())
+    return cleaned == cleaned[::-1]
 
-    def test_phrase_palindromes(self):
-        self.assertTrue(is_palindrome("A man, a plan, a canal: Panama"))
-        self.assertTrue(is_palindrome("Was it a car or a cat I saw?"))
-        self.assertTrue(is_palindrome("No lemon, no melon"))
-
-    def test_non_palindromes(self):
-        self.assertFalse(is_palindrome("hello"))
-        self.assertFalse(is_palindrome("python"))
-        self.assertFalse(is_palindrome("This is not a palindrome"))
-
-    def test_edge_cases(self):
-        self.assertTrue(is_palindrome(""))
-        self.assertTrue(is_palindrome("a"))
-        self.assertTrue(is_palindrome("A"))
-
-if _name_ == '_main_':
-    unittest.main()
+if _name_ == "_main_":
+    while True:
+        try:
+            frase = input("Ingrese una palabra o frase: ")
+            if is_palindrome(frase):
+                print(f'"{frase}" es un palíndromo')
+            else:
+                print(f'"{frase}" no es un palíndromo')
+        except KeyboardInterrupt:
+            print("\nSaliendo...")
+            break
